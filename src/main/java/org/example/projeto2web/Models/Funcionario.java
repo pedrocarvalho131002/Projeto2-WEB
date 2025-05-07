@@ -1,13 +1,13 @@
 package org.example.projeto2web.Models;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Table(name = "funcionario")
 public class Funcionario {
     @Id
-    @ColumnDefault("nextval('funcionario_id_funcionario_seq')")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "funcionario_id_gen")
+    @SequenceGenerator(name = "funcionario_id_gen", sequenceName = "funcionario_id_funcionario_seq", allocationSize = 1)
     @Column(name = "id_funcionario", nullable = false)
     private Integer id;
 

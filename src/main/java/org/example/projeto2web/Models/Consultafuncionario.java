@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "consultafuncionario")
 public class Consultafuncionario {
+    @SequenceGenerator(name = "consultafuncionario_id_gen", sequenceName = "consulta_id_consulta_seq", allocationSize = 1)
     @EmbeddedId
     private ConsultafuncionarioId id;
 

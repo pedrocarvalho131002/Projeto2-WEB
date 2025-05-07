@@ -1,7 +1,6 @@
 package org.example.projeto2web.Models;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.ColumnDefault;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -10,7 +9,8 @@ import java.time.LocalTime;
 @Table(name = "consulta")
 public class Consulta {
     @Id
-    @ColumnDefault("nextval('consulta_id_consulta_seq')")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "consulta_id_gen")
+    @SequenceGenerator(name = "consulta_id_gen", sequenceName = "consulta_id_consulta_seq", allocationSize = 1)
     @Column(name = "id_consulta", nullable = false)
     private Integer id;
 

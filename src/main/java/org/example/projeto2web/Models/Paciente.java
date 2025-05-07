@@ -1,10 +1,6 @@
 package org.example.projeto2web.Models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import org.hibernate.annotations.ColumnDefault;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -12,7 +8,8 @@ import java.time.LocalDate;
 @Table(name = "paciente")
 public class Paciente {
     @Id
-    @ColumnDefault("nextval('paciente_id_paciente_seq')")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "paciente_id_gen")
+    @SequenceGenerator(name = "paciente_id_gen", sequenceName = "paciente_id_paciente_seq", allocationSize = 1)
     @Column(name = "id_paciente", nullable = false)
     private Integer id;
 
