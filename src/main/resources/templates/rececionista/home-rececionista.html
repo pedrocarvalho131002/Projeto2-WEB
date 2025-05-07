@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Rececionista</title>
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+</head>
+<body>
+<div style="display: flex; height: 100vh;">
+    <div class="sidebar">
+        <img th:src="@{/images/FisioLife.png}" alt="Logo"/>
+        <button class="sidebar-button">Registar Consulta</button>
+        <button class="sidebar-button">Editar Consulta</button>
+        <button class="sidebar-button">Listar Consultas</button>
+        <button class="logout-button">Terminar Sessão</button>
+    </div>
+    <div class="main-content">
+        <div class="main-title">Bem-vindo(a), Rececionista!</div>
+        <p>Gerencie facilmente as consultas da clínica.</p>
+        <p>Use o menu lateral para registar, editar ou listar consultas.</p>
+    </div>
+</div>
+</body>
+</html>

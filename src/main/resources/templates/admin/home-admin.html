@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin</title>
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+</head>
+<body>
+<div style="display: flex; height: 100vh;">
+    <div class="sidebar">
+        <img th:src="@{/images/FisioLife.png}" alt="Logo"/>
+        <button class="sidebar-button">Gerir Funcionários</button>
+        <button class="sidebar-button">Gerir Consultas</button>
+        <button class="sidebar-button">Ver Estatísticas</button>
+        <button class="logout-button">Terminar Sessão</button>
+    </div>
+    <div class="main-content">
+        <div class="main-title">Bem-vindo(a), Administrador!</div>
+        <p>Gerencie os recursos da clínica com eficiência.</p>
+        <p>Use o menu lateral para gerir funcionários, consultas e consultar estatísticas.</p>
+    </div>
+</div>
+</body>
+</html>

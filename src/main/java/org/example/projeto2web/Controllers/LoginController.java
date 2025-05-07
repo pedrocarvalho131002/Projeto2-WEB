@@ -56,11 +56,11 @@ public class LoginController {
 
             if ("fisioterapeuta".equals(cargo)) {
                 fisioterapeutaLogadoId = loginResult.getId();
-                return "redirect:/home-fisioterapeuta";
+                return "redirect:/fisioterapeuta/home";
             } else if ("admin".equals(cargo)) {
-                return "redirect:/home-admin";
+                return "redirect:/admin/home";
             } else if ("rececionista".equals(cargo)) {
-                return "redirect:/home-rececionista";
+                return "redirect:/rececionista/home";
             } else {
                 return "redirect:/home";
             }

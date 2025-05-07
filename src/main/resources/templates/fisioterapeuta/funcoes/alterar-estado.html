@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Alterar Estado da Consulta</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2ea5af;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #2ea5af;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .message {
+            margin-top: 15px;
+            text-align: center;
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Alterar Estado da Consulta</h2>
+
+    <form th:action="@{/fisioterapeuta/alterar-estado}" method="post">
+        <div class="form-group">
+            <label for="idConsulta">ID da Consulta:</label>
+            <input type="text" name="idConsulta" id="idConsulta" required>
+        </div>
+
+        <div class="form-group">
+            <label for="estado">Novo Estado:</label>
+            <select name="estado" id="estado" required>
+                <option value="" disabled selected>-- Selecione --</option>
+                <option th:each="estado : ${estados}"
+                        th:value="${estado}"
+                        th:text="${estado}"></option>
+            </select>
+        </div>
+
+        <button type="submit">Atualizar Estado</button>
+
+        <div th:if="${mensagem}" class="message" th:text="${mensagem}"></div>
+    </form>
+</div>
+</body>
+</html>

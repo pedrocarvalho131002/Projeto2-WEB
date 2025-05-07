@@ -1,0 +1,36 @@
+<!-- templates/fisioterapeuta/minhas-consultas.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Minhas Consultas</title>
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+</head>
+<body>
+<div style="padding: 30px; text-align: center;">
+    <h2 style="color: #2ea5af;">Minhas Consultas</h2>
+
+    <table border="1" style="margin: auto; width: 80%; text-align: center;">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Paciente</th>
+            <th>Tipo Consulta</th>
+            <th>Data</th>
+            <th>Hora</th>
+            <th>Estado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="consulta : ${consultas}">
+            <td th:text="${consulta.id}"></td>
+            <td th:text="${consulta.idPaciente.nome}"></td>
+            <td th:text="${consulta.idTipo.metodo}"></td>
+            <td th:text="${consulta.dataConsulta}"></td>
+            <td th:text="${consulta.horaConsulta}"></td>
+            <td th:text="${consulta.estado}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
