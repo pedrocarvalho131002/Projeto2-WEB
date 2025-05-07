@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            background: linear-gradient(to bottom right, #0f658d, #4194b4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 350px;
+            max-width: 90vw;
+        }
+
+        .login-box img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group input {
+            width: 200px;
+            padding: 8px;
+            border: 1px solid #42A9C4;
+            border-radius: 5px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            background-color: #42A9C4;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .btn-secondary {
+            background-color: #999999;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="login-box">
+    <img th:src="@{/images/FisioLife.png}" alt="Logo"/>
+
+    <form th:action="@{/login}" th:object="${loginData}" method="post">
+        <div class="form-group">
+            <span>👤</span>
+            <input type="text" th:field="*{id}" placeholder="Nº Funcionário"/>
+        </div>
+
+        <div class="form-group">
+            <span>🔒</span>
+            <input type="password" th:field="*{password}" placeholder="Palavra-Passe"/>
+        </div>
+
+        <div class="buttons">
+            <button type="submit" class="btn">Login</button>
+            <a href="#" onclick="window.close()" class="btn btn-secondary">Sair</a>
+        </div>
+
+        <div th:if="${loginError}" class="error" th:text="${loginError}"></div>
+    </form>
+</div>
+</body>
+</html>
