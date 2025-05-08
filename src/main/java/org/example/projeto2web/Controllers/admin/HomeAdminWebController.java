@@ -28,8 +28,9 @@ public class HomeAdminWebController {
         return "admin/ver-estatisticas";
     }
 
-    @GetMapping("/logout")
+    @GetMapping("/logout-admin")
     public String logoutAdmin() {
         return "redirect:/login";
     }
+
 }

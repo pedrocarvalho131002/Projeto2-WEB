@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Editar Consulta</title>
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2ea5af;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"], select, input[type="date"], input[type="time"], input[type="number"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        button {
+            background-color: #2ea5af;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .back-link {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .back-link a {
+            color: #555;
+            text-decoration: none;
+        }
+
+        .mensagem {
+            color: green;
+            text-align: center;
+        }
+
+        .erro {
+            color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Parte 1: Formulário para carregar consulta por ID -->
+    <div th:if="${consulta == null}">
+        <h2>Carregar Consulta</h2>
+        <form th:action="@{/rececionista/editar-consulta}" method="get">
+            <label>Insira o ID da Consulta:</label>
+            <input type="number" name="id" required />
+            <button type="submit">Carregar Consulta</button>
+        </form>
+        <div class="erro" th:if="${erro}" th:text="${erro}"></div>
+        <div class="back-link">
+            <a th:href="@{/rececionista/home}">← Voltar</a>
+        </div>
+    </div>
+
+    <!-- Parte 2: Formulário de edição -->
+    <div th:if="${consulta != null}">
+        <h2>Editar Consulta</h2>
+        <form th:action="@{/rececionista/editar-consulta}" method="post">
+            <label>ID da Consulta</label>
+            <input type="text" name="id" th:value="${consulta.id}" readonly />
+
+            <label>Paciente</label>
+            <select name="pacienteId" required>
+                <option value="" disabled>Selecione...</option>
+                <option th:each="p : ${pacientes}" th:value="${p.id}" th:text="${p.nome}"
+                        th:selected="${consulta.idPaciente?.id == p.id}"></option>
+            </select>
+
+            <label>Funcionário</label>
+            <select name="funcionarioId" required>
+                <option value="" disabled>Selecione...</option>
+                <option th:each="f : ${fisioterapeutas}" th:value="${f.id}" th:text="${f.nome}"
+                        th:selected="${consulta.idFuncionario?.id == f.id}"></option>
+            </select>
+
+            <label>Tipo de Consulta</label>
+            <select name="tipoConsultaId" required>
+                <option value="" disabled>Selecione...</option>
+                <option th:each="t : ${tiposConsulta}" th:value="${t.id}" th:text="${t.metodo}"
+                        th:selected="${consulta.idTipo?.id == t.id}"></option>
+            </select>
+
+            <label>Data</label>
+            <input type="date" name="data" th:value="${consulta.dataConsulta}" required/>
+
+            <label>Hora</label>
+            <input type="time" name="hora" th:value="${consulta.horaConsulta}" required/>
+
+            <label>Estado</label>
+            <select name="estado" required>
+                <option value="" disabled>Selecione...</option>
+                <option th:each="e : ${estados}" th:value="${e}" th:text="${e}"
+                        th:selected="${consulta.estado == e}"></option>
+            </select>
+
+            <button type="submit">Atualizar Consulta</button>
+        </form>
+
+        <div class="mensagem" th:if="${sucesso}" th:text="${sucesso}"></div>
+        <div class="erro" th:if="${erro}" th:text="${erro}"></div>
+
+        <div class="back-link">
+            <a th:href="@{/rececionista/home}">← Voltar</a>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

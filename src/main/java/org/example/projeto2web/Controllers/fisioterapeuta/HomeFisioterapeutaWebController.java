@@ -1,5 +1,6 @@
 package org.example.projeto2web.Controllers.fisioterapeuta;
 
+import org.example.projeto2web.Controllers.LoginController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +25,9 @@ public class HomeFisioterapeutaWebController {
     }
 
     @GetMapping("/logout-fisio")
-    public String logoutFisio() {
+    public String logoutFisioterapeuta() {
+        LoginController.fisioterapeutaLogadoId = null; // limpa o login
         return "redirect:/login";
     }
+
 }

@@ -13,23 +13,10 @@ public class HomeRececionistaWebController {
         return "rececionista/home-rececionista";
     }
 
-    @GetMapping("/rececionista/registar-consulta")
-    public String registarConsulta() {
-        return "rececionista/registar-consulta";
-    }
-
-    @GetMapping("/rececionista/editar-consulta")
-    public String editarConsulta() {
-        return "rececionista/editar-consulta";
-    }
-
-    @GetMapping("/rececionista/listar-consultas")
-    public String listarConsultas() {
-        return "rececionista/listar-consultas";
-    }
 
     @GetMapping("/logout-rececionista")
     public String logoutRececionista() {
         return "redirect:/login";
     }
 }
+

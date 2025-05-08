@@ -17,6 +17,13 @@ public class TipoConsulta {
     @Column(name = "metodo", nullable = false, length = 50)
     private String metodo;
 
+    public TipoConsulta() {
+    }
+
+    public TipoConsulta(Integer id) {
+        this.id = id;
+    }
+
     public Integer getId() {
         return id;
     }

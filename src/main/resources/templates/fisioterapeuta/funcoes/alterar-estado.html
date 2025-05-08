@@ -85,6 +85,11 @@
 
         <div th:if="${mensagem}" class="message" th:text="${mensagem}"></div>
     </form>
+
+    <!-- Botão Voltar -->
+    <form th:action="@{/fisioterapeuta/home}" method="get">
+        <button type="submit" class="back-button">Voltar</button>
+    </form>
 </div>
 </body>
 </html>

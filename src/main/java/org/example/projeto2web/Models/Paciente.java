@@ -98,4 +98,12 @@ public class Paciente {
         this.dataNascimento = dataNascimento;
     }
 
+    public Paciente() {
+    }
+
+    public Paciente(Integer id) {
+        this.id = id;
+    }
+
+
 }

@@ -20,7 +20,7 @@ public class AlterarEstadoWebController {
 
     @GetMapping("/alterar-estado")
     public String mostrarFormularioAlterarEstado(Model model) {
-        model.addAttribute("estados", List.of("AGENDADA", "REALIZADA", "CANCELADA"));
+        model.addAttribute("estados", List.of("Agendada", "Realizada"));
         return "fisioterapeuta/funcoes/alterar-estado";
     }
 
@@ -30,7 +30,7 @@ public class AlterarEstadoWebController {
                                           Model model) {
         Optional<Consulta> optConsulta = consultaService.buscarPorId(idConsulta);
 
-        model.addAttribute("estados", List.of("AGENDADA", "REALIZADA", "CANCELADA"));
+        model.addAttribute("estados", List.of("Agendada", "Realizada"));
 
         if (optConsulta.isEmpty()) {
             model.addAttribute("mensagem", "Consulta não encontrada.");

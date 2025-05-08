@@ -42,6 +42,13 @@ public class Funcionario {
     @Column(name = "n_telemovel", nullable = false, length = 20)
     private String nTelemovel;
 
+    public Funcionario() {
+    }
+
+    public Funcionario(Integer id) {
+        this.id = id;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -129,5 +136,7 @@ public class Funcionario {
     public void setNTelemovel(String nTelemovel) {
         this.nTelemovel = nTelemovel;
     }
+
+
 
 }

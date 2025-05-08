@@ -11,7 +11,10 @@
         <button class="sidebar-button">Gerir Funcionários</button>
         <button class="sidebar-button">Gerir Consultas</button>
         <button class="sidebar-button">Ver Estatísticas</button>
-        <button class="logout-button">Terminar Sessão</button>
+        <a th:href="@{/admin/logout-admin}">
+            <button class="logout-button">Terminar Sessão</button>
+        </a>
+
     </div>
     <div class="main-content">
         <div class="main-title">Bem-vindo(a), Administrador!</div>
