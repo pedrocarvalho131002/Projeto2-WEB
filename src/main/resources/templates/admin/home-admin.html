@@ -8,14 +8,24 @@
 <div style="display: flex; height: 100vh;">
     <div class="sidebar">
         <img th:src="@{/images/FisioLife.png}" alt="Logo"/>
-        <button class="sidebar-button">Gerir Funcionários</button>
-        <button class="sidebar-button">Gerir Consultas</button>
-        <button class="sidebar-button">Ver Estatísticas</button>
+
+        <a th:href="@{/admin/gerirfuncionarios}">
+            <button class="sidebar-button">Gerir Funcionários</button>
+        </a>
+
+        <a th:href="@{/admin/gerirconsultas}">
+            <button class="sidebar-button">Gerir Consultas</button>
+        </a>
+
+        <a th:href="@{/admin/estatisticas}">
+            <button class="sidebar-button">Ver Estatísticas</button>
+        </a>
+
         <a th:href="@{/admin/logout-admin}">
             <button class="logout-button">Terminar Sessão</button>
         </a>
-
     </div>
+
     <div class="main-content">
         <div class="main-title">Bem-vindo(a), Administrador!</div>
         <p>Gerencie os recursos da clínica com eficiência.</p>

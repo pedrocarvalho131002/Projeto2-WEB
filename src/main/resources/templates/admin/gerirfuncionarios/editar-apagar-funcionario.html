@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Editar / Apagar Funcionário</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}">
+</head>
+<body>
+<div class="form-container">
+    <h2 th:if="${modo == 'edicao'}">Editar Funcionário</h2>
+    <h2 th:unless="${modo == 'edicao'}">Carregar Funcionário</h2>
+
+    <!-- Formulário para carregar funcionário -->
+    <form th:if="${modo == 'pesquisa'}" th:action="@{/admin/GerirFuncionarios/editar}" method="get">
+        <label for="id">ID do Funcionário:</label>
+        <input type="number" name="id" required>
+        <button type="submit">Carregar</button>
+    </form>
+
+    <!-- Formulário para editar -->
+    <form th:if="${modo == 'edicao'}" th:action="@{/admin/GerirFuncionarios/editar}" method="post">
+        <input type="hidden" name="id" th:value="${funcionario.id}" />
+
+        <label>Nome:</label>
+        <input type="text" name="nome" th:value="${funcionario.nome}" required />
+
+        <label>Cargo:</label>
+        <select name="tipoId" required>
+            <option th:each="tipo : ${tiposFuncionario}" th:value="${tipo.id}" th:text="${tipo.cargo}"
+                    th:selected="${funcionario.idTipo?.id == tipo.id}"></option>
+        </select>
+
+        <label>Email:</label>
+        <input type="email" name="email" th:value="${funcionario.email}" required />
+
+        <label>NIF:</label>
+        <input type="text" name="nif" th:value="${funcionario.nif}" required />
+
+        <label>Código Postal:</label>
+        <input type="text" name="codigoPostal" th:value="${funcionario.codigoPostal}" />
+
+        <label>Localidade:</label>
+        <input type="text" name="localidade" th:value="${funcionario.localidade}" />
+
+        <label>Rua:</label>
+        <input type="text" name="rua" th:value="${funcionario.rua}" />
+
+        <label>Cidade:</label>
+        <input type="text" name="cidade" th:value="${funcionario.cidade}" />
+
+        <label>Password:</label>
+        <input type="password" name="password" th:value="${funcionario.password}" />
+
+        <label>Telemóvel:</label>
+        <input type="text" name="nTelemovel" th:value="${funcionario.nTelemovel}" />
+
+        <button type="submit">Guardar Alterações</button>
+    </form>
+
+    <!-- Formulário para apagar -->
+    <form th:if="${modo == 'edicao'}" th:action="@{/admin/GerirFuncionarios/apagar}" method="post" style="margin-top: 15px;">
+        <input type="hidden" name="id" th:value="${funcionario.id}" />
+        <button type="submit" style="background-color: red;">Apagar Funcionário</button>
+    </form>
+
+    <div class="erro" th:if="${erro}" th:text="${erro}"></div>
+    <div class="sucesso" th:if="${sucesso}" th:text="${sucesso}"></div>
+
+    <a href="/admin/GerirFuncionarios">
+        <button class="voltar">Voltar</button>
+    </a>
+</div>
+</body>
+</html>

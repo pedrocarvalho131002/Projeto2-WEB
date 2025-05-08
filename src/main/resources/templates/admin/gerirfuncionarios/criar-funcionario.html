@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Criar Funcionário</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}">
+</head>
+<body>
+<div class="form-container">
+    <h2>Criar Novo Funcionário</h2>
+
+    <form th:action="@{/admin/GerirFuncionarios/criar}" method="post">
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome" required>
+
+        <label for="tipoId">Cargo:</label>
+        <select name="tipoId" id="tipoId" required>
+            <option th:each="tipo : ${tiposFuncionario}"
+                    th:value="${tipo.id}"
+                    th:text="${tipo.cargo}">
+            </option>
+        </select>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="nif">NIF:</label>
+        <input type="text" name="nif" id="nif" required>
+
+        <label for="codigoPostal">Código Postal:</label>
+        <input type="text" name="codigoPostal" id="codigoPostal" required>
+
+        <label for="localidade">Localidade:</label>
+        <input type="text" name="localidade" id="localidade" required>
+
+        <label for="rua">Rua:</label>
+        <input type="text" name="rua" id="rua" required>
+
+        <label for="cidade">Cidade:</label>
+        <input type="text" name="cidade" id="cidade" required>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required>
+
+        <label for="nTelemovel">Telemóvel:</label>
+        <input type="text" name="nTelemovel" id="nTelemovel" required>
+
+        <button type="submit">Criar Funcionário</button>
+    </form>
+
+    <div th:if="${erro}" class="erro" th:text="${erro}"></div>
+    <div th:if="${sucesso}" class="sucesso" th:text="${sucesso}"></div>
+
+    <a href="/admin/gerirfuncionarios">
+        <button class="voltar">Voltar</button>
+    </a>
+</div>
+</body>
+</html>

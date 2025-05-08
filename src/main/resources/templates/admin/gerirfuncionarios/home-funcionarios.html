@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Gerir Funcionários</title>
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f9f9f9;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #2ea5af;
+            margin-bottom: 30px;
+        }
+
+        .btn-option {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 16px;
+            background-color: #2ea5af;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .btn-option:hover {
+            background-color: #278f99;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Gerir Funcionários</h2>
+
+    <a th:href="@{/admin/GerirFuncionarios/listar}" class="btn-option">Listar Funcionários</a>
+    <a th:href="@{/admin/GerirFuncionarios/criar}" class="btn-option">Criar Novo Funcionário</a>
+    <a th:href="@{/admin/GerirFuncionarios/editar}" class="btn-option">Editar / Apagar Funcionário</a>
+
+</div>
+</body>
+</html>

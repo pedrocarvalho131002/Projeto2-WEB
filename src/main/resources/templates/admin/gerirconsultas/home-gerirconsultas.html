@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Gerir Consultas</title>
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+</head>
+<body>
+<div class="container">
+    <h2>Gestão de Consultas</h2>
+    <p>Escolha uma das opções abaixo para gerir as consultas da clínica.</p>
+
+    <div class="button-group">
+        <a th:href="@{/admin/gerirconsultas/criar}">
+            <button>Criar Consulta</button>
+        </a>
+        <a th:href="@{/admin/gerirconsultas/editar}">
+            <button>Editar Consulta</button>
+        </a>
+        <a th:href="@{/admin/gerirconsultas/listar}">
+            <button>Listar Consultas</button>
+        </a>
+    </div>
+
+    <div class="back-link">
+        <a th:href="@{/admin/home}">← Voltar</a>
+    </div>
+</div>
+</body>
+</html>
