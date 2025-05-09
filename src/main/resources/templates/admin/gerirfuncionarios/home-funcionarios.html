@@ -25,6 +25,12 @@
             margin-bottom: 30px;
         }
 
+        .back-button {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
         .btn-option {
             display: block;
             width: 100%;
@@ -50,6 +56,7 @@
     <a th:href="@{/admin/GerirFuncionarios/listar}" class="btn-option">Listar Funcionários</a>
     <a th:href="@{/admin/GerirFuncionarios/criar}" class="btn-option">Criar Novo Funcionário</a>
     <a th:href="@{/admin/GerirFuncionarios/editar}" class="btn-option">Editar / Apagar Funcionário</a>
+    <a th:href="@{/admin/home}" class="back-button">Voltar</a>
 
 </div>
 </body>

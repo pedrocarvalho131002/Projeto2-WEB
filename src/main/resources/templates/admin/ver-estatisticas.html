@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Estatísticas</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" th:href="@{/css/form.css}">
+</head>
+<body>
+<div class="form-container">
+    <h2>📊 Estatísticas da Clínica</h2>
+
+    <p th:text="'Consultas Realizadas: ' + ${realizadas}"></p>
+    <p th:text="'Consultas Agendadas: ' + ${agendadas}"></p>
+    <p th:text="'Total de Pagamentos: ' + ${totalPagamentos} + ' €'"></p>
+
+    <h3>Distribuição dos Tipos de Pagamento</h3>
+    <div style="width: 500px; height: 400px; margin: auto;">
+        <canvas id="graficoPizza"></canvas>
+    </div>
+
+    <a href="/admin/home">
+        <button class="voltar">Voltar</button>
+    </a>
+</div>
+
+<script th:inline="javascript">
+    const dados = [[${distribuicaoTipos}]];
+    const ctx = document.getElementById('graficoPizza').getContext('2d');
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: Object.keys(dados),
+            datasets: [{
+                label: 'Tipos de Pagamento',
+                data: Object.values(dados),
+                backgroundColor: ['#2ea5af', '#ffb347', '#ff6961', '#779ecb', '#77dd77'],
+            }]
+        }
+    });
+</script>
+</body>
+</html>
